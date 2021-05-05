@@ -1,70 +1,16 @@
-# Getting Started with Create React App
+```
+## 项目使用规则
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 该项目是用于编写嘻苑的子组件
 
-## Available Scripts
+#### 编写注意事项：项目中以分割线组件为例，注意内部不需要修改的部分，其他部分可随需求变化
 
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### 打包注意事项：
+1、每个新项目使用时需要获取唯一的 key 并在 package.json 文件中将项目名称命名为该 key+‘edt/show’这样可以使得每一个子组件的项目都不重名(qiankun 才能正确加载)
+2、同时需要修改 config-overrides.js 的 config.output.library 的值为该 key
+3、当打包编辑组件时需要使用 indexEdt.js 文件作为入口文件，同时需要修改 config-overrides.js 文件 config.output.publicPath 的值为/public/micor/{该 key}/edt
+4、当打包展示组件时需要使用 indexShow.js 文件作为入口文件，同时需要修改 config-overrides.js 文件 config.output.publicPath 的值为/public/micor/{该 key}/show
+5、完成打包后需要分别将两个文件夹放入到同一个文件夹(命名为 该key)下，并将编辑组件的文件夹改名为edt，将展示组件的文件夹改名为show
+6、将修改好的文件夹压缩为zip
+7、将压缩文件在后台上传，同时填写并提交相应的信息即可
+```
